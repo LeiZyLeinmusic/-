@@ -48,19 +48,19 @@ const Home: React.FC = () => {
   const FEATURED_PRODUCTS = [
     {
       ...PRODUCTS.find(p => p.slug === 'floor-soundproof-mat'),
-      customImage: 'https://docs.google.com/drawings/d/e/2PACX-1vTXeaJyksqThuqDuLGTelBcr3eTSGUy6ifK0jr_2hM_X28ZiDJITdiDHIb-ibJTcFVAKAe2B_SoeLTU/pub?w=399&h=388'
+      customImage: 'https://docs.google.com/drawings/d/e/2PACX-1vRjaVHmTV2qOWKhWOamkSyOByvyzwLnxzPkS8AKT3IxV1mgoUYtI1-TjlNjDRqrKAjFyA1kPpE7FJck/pub?w=960&h=720'
     },
     {
       ...PRODUCTS.find(p => p.slug === 'pvc-waterproof-membrane'),
-      customImage: 'https://docs.google.com/drawings/d/e/2PACX-1vQAdN_CtjM5xT7_sbBvD71FQS_8zbrmg6BiqtqnxE80qHcIFHwn0RGUDe0dGk64k4rvqT6zBoIDabov/pub?w=597&h=598'
+      customImage: 'https://docs.google.com/drawings/d/e/2PACX-1vSVlRckWauD427N5EOb2vg60ka_LWfhLFITAhR73drlC5Scm_nJrpxD8w9m2HlO0RME59kTid9fLOgT/pub?w=960&h=720'
     },
     {
       ...PRODUCTS.find(p => p.slug === 'anti-corrosion-lining'),
-      customImage: 'https://docs.google.com/drawings/d/e/2PACX-1vRe8ihoMjkO5zd24B03ab0X7jIFZ9k_JDyJWEjXhz3iXnJ8BYcFH5j7tWDsWL2aYIULhidwLt6jBKG0/pub?w=915&h=685'
+      customImage: 'https://docs.google.com/drawings/d/e/2PACX-1vTY4AG6t_-tSuovYRO0SsL11SkQxhg7O64Q1b0OJNBhmnp0PcSjRyQaxNzb2pfKX-RW3BjpB-7ly_E-/pub?w=960&h=720'
     },
     {
       ...PRODUCTS.find(p => p.slug === 'pvc-waterstop'),
-      customImage: 'https://docs.google.com/drawings/d/e/2PACX-1vRzBai5vIOi76_KWWPj7WU5pH7yHZm7DrhWcYe7eqQxzsmiQIaDomGDXQt491yx6z40JPMj5xLZmNm4/pub?w=928&h=497'
+      customImage: 'https://docs.google.com/drawings/d/e/2PACX-1vTeco-QFw1QyUI8rF6e98IFXP-fs3Tw7WSirYmjLdbcRtR-mlNMgTdKViQFPW_uv-Dmb7z-hLeUzlma/pub?w=927&h=523'
     }
   ].filter(item => item.id); // Ensure valid products
 
@@ -273,6 +273,48 @@ const Home: React.FC = () => {
                 </button>
               </>
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Clients Section */}
+      <section className="w-full py-24 flex flex-col items-center bg-white overflow-hidden">
+        {/* Header & Text Container */}
+        <div className="max-w-[800px] w-full px-10 text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-text">我們的客戶</h2>
+          <p className="text-brand-textSec text-lg leading-relaxed">
+            煒鑫實業多年來與各大知名企業及公共工程單位建立深厚的合作關係。<br className="hidden md:block" />
+            我們以專業的技術與卓越的品質，贏得客戶的信賴與肯定。
+          </p>
+        </div>
+
+        {/* Logo Slider / Marquee Container */}
+        <div className="w-full overflow-hidden relative flex">
+          {/* Gradient masks for smooth fade effect at edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+          
+          {/* Slider Track (Duplicated for seamless infinite scroll) */}
+          <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+            {[...Array(2)].map((_, trackIndex) => (
+              <div key={trackIndex} className="flex gap-8 px-4">
+                {[
+                  { name: '台北捷運', logo: 'https://docs.google.com/drawings/d/e/2PACX-1vS9sI-3hdqE9H-174ZRtFV6T0zjY5Fk2rhTFhy8KCUu6QVvTam_nCWV00IgXHm06WcZF1mM2knRxMW3/pub?w=960&h=720' },
+                  { name: '台灣高鐵', logo: 'https://docs.google.com/drawings/d/e/2PACX-1vTd6dLDCpFyT3ECt8ZsG8PKiK-kvdw0aVjZGZ_OsecxP_bN5kBFnXQEyhiOwtfCEJ1PhgVAWSUVSfak/pub?w=960&h=720' },
+                  { name: '南亞塑膠', logo: 'https://docs.google.com/drawings/d/e/2PACX-1vS9sI-3hdqE9H-174ZRtFV6T0zjY5Fk2rhTFhy8KCUu6QVvTam_nCWV00IgXHm06WcZF1mM2knRxMW3/pub?w=960&h=720' },
+                  { name: '高雄捷運', logo: 'https://docs.google.com/drawings/d/e/2PACX-1vTd6dLDCpFyT3ECt8ZsG8PKiK-kvdw0aVjZGZ_OsecxP_bN5kBFnXQEyhiOwtfCEJ1PhgVAWSUVSfak/pub?w=960&h=720' },
+                  { name: '交通部公路總局', logo: 'https://docs.google.com/drawings/d/e/2PACX-1vS9sI-3hdqE9H-174ZRtFV6T0zjY5Fk2rhTFhy8KCUu6QVvTam_nCWV00IgXHm06WcZF1mM2knRxMW3/pub?w=960&h=720' },
+                  { name: '廣州地鐵', logo: 'https://docs.google.com/drawings/d/e/2PACX-1vTd6dLDCpFyT3ECt8ZsG8PKiK-kvdw0aVjZGZ_OsecxP_bN5kBFnXQEyhiOwtfCEJ1PhgVAWSUVSfak/pub?w=960&h=720' },
+                ].map((client, index) => (
+                  <div key={index} className="flex items-center gap-4 bg-gray-50 px-6 py-4 rounded-2xl border border-gray-100 hover:shadow-md transition-shadow cursor-default">
+                    <div className="w-16 h-16 rounded-xl bg-white shadow-sm flex items-center justify-center overflow-hidden shrink-0 p-2">
+                      <img src={client.logo} alt={client.name} className="w-full h-full object-contain" />
+                    </div>
+                    <span className="text-xl font-bold text-brand-text whitespace-nowrap">{client.name}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>

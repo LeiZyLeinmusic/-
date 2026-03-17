@@ -3,6 +3,9 @@ import { Routes, Route, Link, useParams } from 'react-router-dom';
 import { SectionTitle, Card, Button } from '../components/UI';
 import { PageHeader } from '../components/Layout';
 import { NEWS, INSIGHTS } from '../constants';
+import { MapPin, Phone, Printer, Mail } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 // --- NEWS ---
 const NewsList = () => (
@@ -105,8 +108,7 @@ const InsightDetail = () => {
              <div className="prose max-w-none text-brand-textSec leading-loose">
                  <p className="font-bold text-black text-lg">{item.summary}</p>
                  <br />
-                 <p>{item.content}</p>
-                 <p>技術文章內容示範...</p>
+                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{item.content}</ReactMarkdown>
              </div>
         </div>
     )
@@ -168,24 +170,31 @@ export const Contact = () => (
              <p>若您有任何產品需求、工程諮詢或合作提案，歡迎透過下方表單或直接與我們聯繫。</p>
              <ul className="space-y-6">
                 <li className="flex gap-4">
-                   <div className="w-12 h-12 bg-brand-yellow flex items-center justify-center text-xl text-black">📍</div>
+                   <div className="w-12 h-12 bg-brand-yellow flex items-center justify-center text-black shrink-0"><MapPin className="w-6 h-6" /></div>
                    <div>
                       <h5 className="font-bold text-black">公司地址</h5>
-                      <p>台北市中山區某某路123號10樓</p>
+                      <p>台北市廣州街114號8樓</p>
                    </div>
                 </li>
                 <li className="flex gap-4">
-                   <div className="w-12 h-12 bg-brand-yellow flex items-center justify-center text-xl text-black">📞</div>
+                   <div className="w-12 h-12 bg-brand-yellow flex items-center justify-center text-black shrink-0"><Phone className="w-6 h-6" /></div>
                    <div>
                       <h5 className="font-bold text-black">服務電話</h5>
-                      <p>02-2345-6789</p>
+                      <p>+886-2-2308-6570</p>
                    </div>
                 </li>
                 <li className="flex gap-4">
-                   <div className="w-12 h-12 bg-brand-yellow flex items-center justify-center text-xl text-black">✉️</div>
+                   <div className="w-12 h-12 bg-brand-yellow flex items-center justify-center text-black shrink-0"><Printer className="w-6 h-6" /></div>
+                   <div>
+                      <h5 className="font-bold text-black">傳真</h5>
+                      <p>+886-2-2302-0670</p>
+                   </div>
+                </li>
+                <li className="flex gap-4">
+                   <div className="w-12 h-12 bg-brand-yellow flex items-center justify-center text-black shrink-0"><Mail className="w-6 h-6" /></div>
                    <div>
                       <h5 className="font-bold text-black">電子信箱</h5>
-                      <p>service@waicin.com.tw</p>
+                      <p>waicin@ms48.hinet.net</p>
                    </div>
                 </li>
              </ul>

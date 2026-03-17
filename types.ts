@@ -8,7 +8,12 @@ export interface Product {
   images: string[];
   specs: { label: string; value: string }[];
   material: string;
-  applications: string[];
+  applicationsText?: string;
+  applicationsList?: string[];
+  features: string[];
+  advantages?: string;
+  applicationDetails?: { title: string; img: string }[];
+  documents?: { name: string; size: string }[];
 }
 
 export interface Project {

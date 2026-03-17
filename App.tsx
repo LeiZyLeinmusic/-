@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { Header, Footer } from './components/Layout';
+import { Header, Footer, BackToTop } from './components/Layout';
 import Home from './pages/Home';
 import { Products } from './pages/Products';
 import { Projects } from './pages/Projects';
@@ -50,6 +50,7 @@ const App: React.FC = () => {
           </Routes>
         </main>
         <Footer />
+        <BackToTop />
       </div>
     </Router>
   );

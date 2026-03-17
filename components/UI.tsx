@@ -68,7 +68,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
       <div className="relative bg-white w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-none shadow-2xl animate-fade-in">
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 w-12 h-12 flex items-center justify-center bg-brand-yellow text-white hover:bg-black hover:text-white transition-colors"
+          className="absolute top-0 right-0 z-10 w-12 h-12 flex items-center justify-center bg-brand-yellow text-white hover:bg-black hover:text-white transition-colors"
         >
           <span className="text-2xl">✕</span>
         </button>
