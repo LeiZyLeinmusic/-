@@ -20,6 +20,9 @@ export interface Project {
   id: string;
   title: string;
   category: ProjectCategory;
+  client?: string;
+  contractor?: string;
+  scope?: string;
   location: string;
   year: string;
   images: string[];

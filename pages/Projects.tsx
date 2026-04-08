@@ -16,53 +16,71 @@ export const ProjectModal: React.FC<{ projectId: string; onClose: () => void }> 
 
   return (
     <Modal isOpen={!!project} onClose={onClose}>
-      <div className="flex flex-col">
-        {/* Top: Image Carousel */}
-        <div className="relative w-full h-[200px] md:h-[350px] bg-black flex items-center justify-center shrink-0">
-          <img src={project.images[currentImg]} alt={project.title} className="w-full h-full object-cover" />
+      <div className="flex flex-col md:flex-row min-h-[50vh]">
+        {/* Left/Top: Image Carousel */}
+        <div className="relative w-full md:w-1/2 h-[250px] md:h-auto bg-black flex items-center justify-center shrink-0">
+          <img src={project.images[currentImg]} alt={project.title} className="absolute inset-0 w-full h-full object-contain md:object-cover" />
           {project.images.length > 1 && (
              <>
-               <button onClick={() => setCurrentImg(prev => prev > 0 ? prev - 1 : project.images.length - 1)} className="absolute left-0 top-1/2 -translate-y-1/2 text-white bg-black/50 w-10 h-10 flex items-center justify-center hover:bg-brand-yellow hover:text-black transition-colors">←</button>
-               <button onClick={() => setCurrentImg(prev => prev < project.images.length - 1 ? prev + 1 : 0)} className="absolute right-0 top-1/2 -translate-y-1/2 text-white bg-black/50 w-10 h-10 flex items-center justify-center hover:bg-brand-yellow hover:text-black transition-colors">→</button>
+               <button onClick={() => setCurrentImg(prev => prev > 0 ? prev - 1 : project.images.length - 1)} className="absolute left-0 top-1/2 -translate-y-1/2 text-white bg-black/50 w-10 h-10 flex items-center justify-center hover:bg-brand-yellow hover:text-black transition-colors z-10">←</button>
+               <button onClick={() => setCurrentImg(prev => prev < project.images.length - 1 ? prev + 1 : 0)} className="absolute right-0 top-1/2 -translate-y-1/2 text-white bg-black/50 w-10 h-10 flex items-center justify-center hover:bg-brand-yellow hover:text-black transition-colors z-10">→</button>
              </>
           )}
-          <div className="absolute bottom-0 right-0 bg-black/60 text-white text-xs px-3 py-1.5">
+          <div className="absolute bottom-0 right-0 bg-black/60 text-white text-xs px-3 py-1.5 z-10">
             照片提供：{project.title}
           </div>
         </div>
 
-        {/* Bottom: Info Panel */}
-        <div className="flex flex-col p-4 md:p-6 overflow-y-auto">
-          <h2 className="text-xl md:text-2xl font-bold mb-4 text-brand-text">{project.title}</h2>
+        {/* Right/Bottom: Info Panel */}
+        <div className="flex flex-col w-full md:w-1/2 p-6 md:p-10 overflow-y-auto">
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-brand-text">{project.title}</h2>
           
-          <ul className="flex flex-col gap-3 text-xs md:text-sm leading-relaxed">
-            <li className="flex flex-col md:flex-row md:gap-4 border-b border-gray-100 pb-2">
-              <span className="font-bold text-gray-500 md:w-28 shrink-0">工程類別：</span>
+          <ul className="flex flex-col gap-4 text-sm md:text-base leading-relaxed">
+            <li className="flex flex-row gap-2 md:gap-4 border-b border-gray-100 pb-3">
+              <span className="font-bold text-gray-500 w-24 md:w-32 shrink-0">工程類別：</span>
               <span className="text-brand-text">{CATEGORY_MAP[project.category]}</span>
             </li>
-            <li className="flex flex-col md:flex-row md:gap-4 border-b border-gray-100 pb-2">
-              <span className="font-bold text-gray-500 md:w-28 shrink-0">地點 Location：</span>
+            {project.client && (
+              <li className="flex flex-row gap-2 md:gap-4 border-b border-gray-100 pb-3">
+                <span className="font-bold text-gray-500 w-24 md:w-32 shrink-0">業主：</span>
+                <span className="text-brand-text">{project.client}</span>
+              </li>
+            )}
+            {project.contractor && (
+              <li className="flex flex-row gap-2 md:gap-4 border-b border-gray-100 pb-3">
+                <span className="font-bold text-gray-500 w-24 md:w-32 shrink-0">承攬營造商：</span>
+                <span className="text-brand-text">{project.contractor}</span>
+              </li>
+            )}
+            {project.scope && (
+              <li className="flex flex-row gap-2 md:gap-4 border-b border-gray-100 pb-3">
+                <span className="font-bold text-gray-500 w-24 md:w-32 shrink-0">施工項目：</span>
+                <span className="text-brand-text">{project.scope}</span>
+              </li>
+            )}
+            <li className="flex flex-row gap-2 md:gap-4 border-b border-gray-100 pb-3">
+              <span className="font-bold text-gray-500 w-24 md:w-32 shrink-0">地點：</span>
               <span className="text-brand-text">{project.location}</span>
             </li>
-            <li className="flex flex-col md:flex-row md:gap-4 border-b border-gray-100 pb-2">
-              <span className="font-bold text-gray-500 md:w-28 shrink-0">年份 Year：</span>
+            <li className="flex flex-row gap-2 md:gap-4 border-b border-gray-100 pb-3">
+              <span className="font-bold text-gray-500 w-24 md:w-32 shrink-0">年份：</span>
               <span className="text-brand-text">{project.year}</span>
             </li>
-            <li className="flex flex-col md:flex-row md:gap-4 border-b border-gray-100 pb-2">
-              <span className="font-bold text-gray-500 md:w-28 shrink-0">工程簡介：</span>
+            <li className="flex flex-col md:flex-row md:gap-4 border-b border-gray-100 pb-3">
+              <span className="font-bold text-gray-500 md:w-32 shrink-0">工程簡介：</span>
               <span className="text-brand-textSec">{project.description}</span>
             </li>
-            <li className="flex flex-col md:flex-row md:gap-4 pt-1">
-              <span className="font-bold text-gray-500 md:w-28 shrink-0">使用材料/工法：</span>
+            <li className="flex flex-col md:flex-row md:gap-4 pt-2">
+              <span className="font-bold text-gray-500 md:w-32 shrink-0">使用材料/工法：</span>
               <div className="flex flex-wrap gap-2">
                 {project.materials.map((m, i) => (
-                  <span key={i} className="bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700">{m}</span>
+                  <span key={i} className="bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-700">{m}</span>
                 ))}
                 {usedProducts.map(p => (
                   <Link 
                     key={p.id} 
                     to={`/products/${p.slug}`} 
-                    className="bg-brand-yellow/10 text-brand-text border border-brand-yellow/50 px-2 py-1 text-xs font-medium hover:bg-brand-yellow hover:text-black transition-colors flex items-center gap-1"
+                    className="bg-brand-yellow/10 text-brand-text border border-brand-yellow/50 px-3 py-1.5 text-xs font-medium hover:bg-brand-yellow hover:text-white transition-colors flex items-center gap-1"
                     onClick={onClose}
                   >
                     {p.name}
